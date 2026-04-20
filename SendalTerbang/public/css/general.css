@@ -1,0 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:ital,wght@0,226;1,226&family=Jersey+10&family=Staatliches&display=swap');
+
+:root{
+    ---white: rgba(252, 252, 252, 1);
+    ---black: rgba(0, 0, 0, 1);
+    ---gray: rgb(59, 59, 59);
+    ---lightGray: rgb(225, 225, 225);
+    ---blue: rgba(56, 68, 235, 1);
+    ---pink: rgb(220, 41, 158);
+    ---yellow: rgb(238, 156, 50);
+    ---dark-blue: rgb(33, 40, 62);
+    ---dark-blue2: rgb(47, 56, 85);
+}
+

@@ -1,0 +1,119 @@
+@import url(general.css);
+
+.void-bg{
+    background-color: var(---gray);
+    position: absolute;
+    width: 200%;
+    height: 300px;
+    left: -50%;
+    z-index: -10;
+    margin-top: -20px;
+}
+.void-judul{
+    background-color: var(---white);
+    position: absolute;
+    width: 200%;
+    height: 70px;
+    left: -50%;
+    z-index: -5;
+    margin-top: 10px;
+    border-bottom: 2px solid var(---black);
+}
+.welcome{
+    width: 100%;
+    height: 300px;
+    margin: auto;
+    margin-bottom: 25px;
+    align-content: center;
+    color: var(---white);
+
+    h1{
+        font-size: 22px;
+    }
+    p{
+        font-size: 14px;
+    }
+}
+
+.bg-topProject{
+    background-color: var(---gray);
+    height: 360px;
+}
+
+.topProject{
+    color: var(---white);
+    margin: auto;
+    margin-bottom: 60px;
+
+    padding-top: 20px;
+    padding-bottom: 20px;
+    h1{
+        font-size: 22px;
+        margin: auto;
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .projectSelected{
+        width: 80%;
+        margin: auto;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 25px;
+
+        .projectImg{
+            object-fit: cover;
+            width: 100%;
+            height: 240px;
+            /* width: 512px; */
+        }
+
+        .projectText{
+            p{
+                color: var(---lightGray);
+            }
+        }
+    }
+
+    .buttonSlider{
+        width: 960px;
+        height: 240px;
+        align-content: center;
+        margin: auto;
+        position: absolute;
+        button{
+            background: none;
+            border: none;
+            color: var(---white);
+            width: 24px;
+            font-size: 42px;
+        }
+        .sliderL{
+            margin: auto;
+            position: relative;
+            left: 0;
+        }
+        .sliderR{
+            margin: auto;
+            position: relative;
+            translate: -50% 0;
+            left: 92%;
+        }
+    }
+
+}
+
+.projectContainer{
+    h1{
+        font-size: 22px;
+        margin-bottom: 20px;
+    }
+
+    .more{
+        width: 100%;
+        text-align: center;
+        margin: auto;
+        margin-top: 20px;
+        font-size: 22px;
+    }
+}

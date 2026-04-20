@@ -1,0 +1,17 @@
+@import url(general.css);
+
+.adminPage{
+    margin: auto;
+    display: grid;
+    grid-template-columns: 320px 1fr;
+
+    .side-navbar{
+        width: 320px;
+    }
+
+    main{
+        margin: auto;
+        width: 100%;
+        font-family: "Jersey 25";
+    }
+}

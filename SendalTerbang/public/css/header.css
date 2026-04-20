@@ -1,0 +1,211 @@
+.bg-polindra {
+    background: linear-gradient(90deg, #002f6c, #005bb5);
+}
+
+.header-top {
+    padding: 15px 0;
+}
+
+/* PERBAIKAN: Background hamburger diubah agar icon terlihat */
+.navbar-toggler {
+    color: white;
+    background: rgba(255, 255, 255, 0.2) !important; /* Background semi transparan */
+    border: 1px solid rgba(255, 255, 255, 0.3) !important; /* Border tipis */
+    margin-bottom: 10px;
+    padding: 8px 12px;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+}
+
+.navbar-toggler:hover {
+    background: rgba(255, 255, 255, 0.3) !important;
+    border-color: rgba(255, 255, 255, 0.5) !important;
+}
+
+/* PERBAIKAN: Pastikan icon hamburger berwarna putih */
+.navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 0.8%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important;
+    width: 1.2em;
+    height: 1.2em;
+}
+
+.navbar-brand {
+    font-size: 1.1rem;
+}
+
+.nav-main {
+    padding: 10px 0;
+    border-bottom: 0.8px solid rgb(255, 255, 255);
+}
+
+.nav-main .navbar-nav {
+    align-items: flex-start !important;
+    justify-content: flex-start !important;
+    margin-right: auto !important;
+}
+
+.nav-main .nav-link {
+    color: #fff !important;
+    font-weight: 500;
+    padding: 10px 20px;
+    border-radius: 8px;
+    transition: 0.3s;
+    margin: 0 5px;
+}
+
+.nav-main .nav-link:hover {
+    background-color: rgba(255, 255, 255, 0.15);
+}
+
+.nav-main .nav-link.active {
+    font-weight: 600;
+}
+
+.user-menu .nav-link {
+    padding: 8px 15px !important;
+}
+
+.user-dropdown .user-avatar img {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    border: 2px solid rgba(255, 255, 255, 0.6);
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.user-dropdown:hover .user-avatar img {
+    transform: scale(1.1);
+}
+
+.user-dropdown .user-name {
+    font-weight: 500;
+    font-size: 15px;
+    max-width: 120px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Dropdown animasi */
+.user-menu-animated {
+    border-radius: 12px;
+    overflow: hidden;
+    animation: fadeInUp 0.25s ease;
+    backdrop-filter: blur(10px);
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(5px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.dropdown-header {
+    padding: 10px 15px;
+    background: rgba(240, 240, 255, 0.2);
+}
+
+.user-avatar-lg img {
+    width: 65px;
+    height: 65px;
+    border-radius: 50%;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    object-fit: cover;
+}
+
+.dropdown-item {
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    transition: 0.2s;
+}
+
+.dropdown-item:hover {
+    background-color: rgba(0, 212, 255, 0.1);
+}
+/* Avatar mobile */
+.user-avatar-lg img {
+    width: 65px;
+    height: 65px;
+    border-radius: 50%;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    object-fit: cover;
+}
+
+/* Box user mobile */
+.mobile-user-box {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    backdrop-filter: blur(8px);
+    padding: 15px;
+}
+
+/* Link style mobile */
+.mobile-user-link {
+    display: block;
+    padding: 10px 0;
+    color: white;
+    font-size: 15px;
+    text-decoration: none;
+    text-align: center;
+    transition: 0.2s;
+}
+
+.mobile-user-link:hover {
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 8px;
+}
+
+/* Mobile styles */
+@media (max-width: 991.98px) {
+    .header-top {
+        padding: 10px 0;
+    }
+    
+    .nav-main {
+        padding: 15px 0;
+        border-bottom: 0.8px solid rgb(255, 255, 255) !important;
+    }
+    
+    .nav-main .navbar-nav {
+        gap: 5px;
+        width: 100%;
+    }
+    
+    .nav-main .nav-link {
+        text-align: left;
+        margin: 2px 0;
+        padding: 12px 15px;
+        width: 100%;
+    }
+    
+    .user-menu {
+        margin-top: 15px;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        padding-top: 15px;
+        width: 100%;
+    }
+    
+    .user-menu .btn {
+        width: 100%;
+        margin: 5px 0;
+    }
+}
+
+/* Desktop styles */
+@media (min-width: 992px) {
+    .nav-main .navbar-nav {
+        gap: 10px;
+        margin-left: 0 !important;
+    }
+    
+    .user-menu {
+        margin-left: auto;
+    }
+}
