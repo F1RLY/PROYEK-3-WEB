@@ -39,5 +39,12 @@ Route::prefix('admin')->group(function () {
     Route::get('/expo', [AdminController::class, 'expo'])->name('admin.expo');
     Route::get('/proyek', [AdminController::class, 'proyek'])->name('admin.proyek');
     Route::get('/dosen', [AdminController::class, 'dosen'])->name('admin.dosen');
+    Route::get('/mahasiswa', [AdminController::class, 'mahasiswa'])->name('admin.mahasiswa');
     Route::get('/user', [AdminController::class, 'user'])->name('admin.user');
+
+    // Verifikasi
+    Route::get('/verifikasi', [AdminController::class, 'verifikasi'])->name('admin.verifikasi');
+    Route::post('/verifikasi/{id}/setujui', [AdminController::class, 'setujui'])->name('admin.verifikasi.setujui');
+    Route::post('/verifikasi/{id}/tolak', [AdminController::class, 'tolak'])->name('admin.verifikasi.tolak');
+    Route::get('/verifikasi/{id}', [AdminController::class, 'detailVerifikasi'])->name('admin.verifikasi.detail');
 });

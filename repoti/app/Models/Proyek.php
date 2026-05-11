@@ -45,4 +45,9 @@ class Proyek extends Model
     {
         return $this->belongsTo(Dosen::class, 'dosenId');
     }
+
+    public function videos()
+    {
+        return $this->hasMany(VideoProyek::class, 'proyekId');
+    }
 }

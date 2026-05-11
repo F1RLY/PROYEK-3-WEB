@@ -56,9 +56,6 @@
                     <div class="text-center mt-4">
                         <p class="text-muted">Belum punya akun? <a href="{{ url('/register') }}" class="text-primary fw-bold">Daftar Sekarang</a></p>
                     </div>
-                    <div class="text-center mt-4">
-                        <p class="text-muted">Login sebagai admin? <a href="{{ route('admin.dashboard') }}" class="text-primary fw-bold">masuk</a></p>
-                    </div>
                 </div>
             </div>
         </div>
