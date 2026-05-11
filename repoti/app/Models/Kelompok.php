@@ -10,10 +10,10 @@ class Kelompok extends Model
     protected $primaryKey = 'id';
     
     protected $fillable = [
-        'mahasiswa', 'proyek', 'created_at', 'updated_at'
+    'mahasiswa', 'nama', 'proyek', 'created_at', 'updated_at'
     ];
     
-    public function mahasiswa()
+    public function anggota()
     {
         return $this->belongsTo(Mahasiswa::class, 'mahasiswa');
     }

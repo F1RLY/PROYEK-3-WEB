@@ -1,146 +1,61 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RepoTI - Admin Panel</title>
+    <title>{{ $title ?? 'Admin' }} — Repo TI</title>
 
-    <!-- Tailwind -->
+    <!-- Tailwind CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
 
     <!-- Material Icons -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
 
-    <!-- Font & Custom Style -->
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
-
         :root {
-            --primary: #1DA1F2;
-            --primary-dark: #0d8bd9;
-            --secondary: #40C4FF;
-            --dark: #2D3142;
+            --primary: #4318FF;
         }
-
         body {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-        }
-
-        .logo-repo {
-            color: var(--dark);
-        }
-
-        .logo-ti {
-            color: var(--primary);
-            margin-left: 2px;
+            font-family: 'DM Sans', sans-serif;
+            background-color: #F4F7FE;
         }
     </style>
 </head>
+<body class="min-h-screen">
 
-<body class="bg-[#F4F7FE] text-[#1B2559]">
-    <div class="flex min-h-screen">
+    {{-- SIDEBAR --}}
+    @include('layouts.sidebar')
 
-        <!-- SIDEBAR -->
-        <aside class="hidden md:flex flex-col w-64 h-screen sticky top-0 bg-white border-r border-gray-100">
+    {{-- MAIN CONTENT --}}
+    <main class="ml-64 min-h-screen p-8">
 
-            <!-- Logo -->
-            <div class="flex items-center justify-center p-8">
-                <h1 class="text-3xl font-extrabold tracking-tight select-none">
-                    <span class="logo-repo">Repo</span><span class="logo-ti">TI</span>
-                </h1>
+        {{-- TOPBAR --}}
+        <div class="flex items-center justify-between mb-8">
+            <div>
+                <h2 class="text-2xl font-bold text-[#1B2559]">{{ $title ?? 'Dashboard' }}</h2>
+                <p class="text-sm text-[#A3AED0]">Selamat datang, {{ Auth::user()->username }}!</p>
             </div>
 
-            <!-- Menu -->
-            <nav class="flex-1 px-4 mt-2">
-                @php
-                    $menus = [
-                        ['title' => 'Dashboard', 'icon' => 'grid_view', 'route' => 'admin.dashboard'],
-                        ['title' => 'Expo', 'icon' => 'calendar_today', 'route' => 'admin.expo'],
-                        ['title' => 'Proyek', 'icon' => 'assignment', 'route' => 'admin.proyek'],
-                        ['title' => 'Dosen', 'icon' => 'supervised_user_circle', 'route' => 'admin.dosen'],
-                        ['title' => 'User', 'icon' => 'person', 'route' => 'admin.user'],
-                    ];
-                @endphp
+            <div class="flex items-center gap-3">
+                <!-- Notif -->
+                <button class="flex items-center justify-center w-10 h-10 rounded-full bg-white shadow-sm text-[#A3AED0] hover:text-[color:var(--primary)] transition">
+                    <span class="material-icons-round text-[20px]">notifications</span>
+                </button>
 
-                @foreach ($menus as $menu)
-                    <a href="{{ route($menu['route']) }}"
-                       class="flex items-center gap-4 px-4 py-3 mb-2 rounded-xl font-bold transition-all
-                       {{ Route::is($menu['route']) 
-                            ? 'bg-[color:var(--primary)]/10 text-[color:var(--primary)]' 
-                            : 'text-[#A3AED0] hover:bg-gray-50' }}">
-
-                        <span class="material-icons-round text-[22px]">
-                            {{ $menu['icon'] }}
-                        </span>
-
-                        <span class="text-sm">
-                            {{ $menu['title'] }}
-                        </span>
-                    </a>
-                @endforeach
-            </nav>
-
-            <!-- Logout -->
-            <div class="p-4 border-t">
-                <form method="POST" action="{{ route('logout') }}">
-                    @csrf
-                    <button type="submit"
-                        class="flex items-center w-full gap-4 px-4 py-3 font-bold text-red-500 rounded-xl transition hover:bg-red-50">
-                        
-                        <span class="material-icons-round">logout</span>
-                        <span class="text-sm">Keluar</span>
-                    </button>
-                </form>
+                <!-- Avatar -->
+                <div class="flex items-center justify-center w-10 h-10 rounded-full bg-[color:var(--primary)] text-white text-sm font-bold shadow-sm">
+                    {{ strtoupper(substr(Auth::user()->username, 0, 1)) }}
+                </div>
             </div>
-        </aside>
+        </div>
 
+        {{-- PAGE CONTENT --}}
+        @yield('content')
 
-        <!-- MAIN -->
-        <main class="flex flex-col flex-1">
+    </main>
 
-            <!-- HEADER -->
-            <header class="sticky top-0 z-10 flex items-center justify-between px-8 py-4 bg-white/80 backdrop-blur-md">
-
-                <!-- Title -->
-                <div>
-                    <p class="text-xs font-medium text-[#A3AED0]">
-                        Main Menu / {{ $title ?? 'Dashboard' }}
-                    </p>
-                    <h2 class="text-3xl font-bold">
-                        {{ $title ?? 'Dashboard' }}
-                    </h2>
-                </div>
-
-                <!-- Actions -->
-                <div class="flex items-center gap-4 px-4 py-2 bg-[#F4F7FE] rounded-full shadow-inner">
-
-                    <!-- Search -->
-                    <div class="flex items-center gap-2 px-3 py-1 bg-white rounded-full shadow-sm">
-                        <span class="material-icons-round text-[#A3AED0] text-[18px]">
-                            search
-                        </span>
-
-                        <input type="text"
-                               placeholder="Search..."
-                               class="w-24 text-sm bg-transparent outline-none border-none">
-                    </div>
-
-                    <!-- Profile -->
-                    <div class="flex items-center justify-center w-9 h-9 rounded-full bg-[color:var(--primary)]/20 cursor-pointer">
-                        <span class="material-icons-round text-[color:var(--primary)] text-[20px]">
-                            person
-                        </span>
-                    </div>
-
-                </div>
-            </header>
-
-            <!-- CONTENT -->
-            <section class="p-8">
-                @yield('content')
-            </section>
-
-        </main>
-    </div>
 </body>
 </html>
