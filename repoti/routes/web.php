@@ -38,9 +38,15 @@ Route::prefix('admin')->group(function () {
     Route::get('/dashboard', [AdminController::class, 'index'])->name('admin.dashboard');
     Route::get('/expo', [AdminController::class, 'expo'])->name('admin.expo');
     Route::get('/proyek', [AdminController::class, 'proyek'])->name('admin.proyek');
+    // Dosen
     Route::get('/dosen', [AdminController::class, 'dosen'])->name('admin.dosen');
+    Route::post('/dosen', [AdminController::class, 'dosenStore'])->name('admin.dosen.store');
+    Route::put('/dosen/{id}', [AdminController::class, 'dosenUpdate'])->name('admin.dosen.update');
+    Route::delete('/dosen/{id}', [AdminController::class, 'dosenDestroy'])->name('admin.dosen.destroy');
+    
     Route::get('/mahasiswa', [AdminController::class, 'mahasiswa'])->name('admin.mahasiswa');
     Route::get('/user', [AdminController::class, 'user'])->name('admin.user');
+    Route::get('/user/{id}', [AdminController::class, 'userDetail'])->name('admin.user.detail');
 
     // Verifikasi
     Route::get('/verifikasi', [AdminController::class, 'verifikasi'])->name('admin.verifikasi');
