@@ -20,6 +20,7 @@
                 ['label' => 'Dashboard',    'icon' => 'dashboard',       'route' => 'admin.dashboard'],
                 ['label' => 'Verifikasi',   'icon' => 'verified',        'route' => 'admin.verifikasi'],
                 ['label' => 'Proyek',       'icon' => 'rocket_launch',   'route' => 'admin.proyek'],
+                ['label' => 'User',       'icon' => 'people',        'route' => 'admin.user'],
                 ['label' => 'Dosen',        'icon' => 'school',          'route' => 'admin.dosen'],
                 ['label' => 'Expo',         'icon' => 'event',           'route' => 'admin.expo'],
             ];
