@@ -189,4 +189,35 @@ class AdminController extends Controller
 
         return view('admin.verifikasi-detail', compact('proyek'));
     }
+
+    public function proyekDestroy($id)
+    {
+        $proyek = Proyek::with('gambars')->findOrFail($id);
+
+        // Hapus file laporan
+        if ($proyek->file_laporan) {
+            $path = public_path('files/laporan/' . $proyek->file_laporan);
+            if (file_exists($path)) unlink($path);
+        }
+
+        // Hapus file ppt
+        if ($proyek->file_ppt) {
+            $path = public_path('files/ppt/' . $proyek->file_ppt);
+            if (file_exists($path)) unlink($path);
+        }
+
+        // Hapus gambar
+        foreach ($proyek->gambars as $gambar) {
+            $path = public_path('images/' . $gambar->lokasi);
+            if (file_exists($path)) unlink($path);
+            \App\Models\GambarProyek::where('gambarId', $gambar->id)->delete();
+            $gambar->delete();
+        }
+
+        // Hapus kelompok & proyek
+        \App\Models\Kelompok::where('proyek', $id)->delete();
+        $proyek->delete();
+
+        return back()->with('success', 'Proyek berhasil dihapus!');
+    }
 }

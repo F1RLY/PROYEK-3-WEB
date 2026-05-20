@@ -162,11 +162,24 @@
                                 @endif
                             </td>
                             <td class="px-6 py-4">
-                                <a href="{{ route('admin.verifikasi.detail', $proyek->id) }}"
-                                    class="inline-flex items-center gap-1 px-3 py-1.5 rounded-xl bg-[#F4F7FE] text-[color:var(--primary)] text-xs font-semibold hover:bg-blue-50 transition">
-                                    <span class="material-icons-round text-[14px]">visibility</span>
-                                    Detail
-                                </a>
+                            <div class="flex items-center gap-2">
+                                    <a href="{{ route('admin.verifikasi.detail', $proyek->id) }}"
+                                        class="inline-flex items-center gap-1 px-3 py-1.5 rounded-xl bg-[#F4F7FE] text-[color:var(--primary)] text-xs font-semibold hover:bg-blue-50 transition">
+                                        <span class="material-icons-round text-[14px]">visibility</span>
+                                        Detail
+                                    </a>
+
+                                    <form method="POST" action="{{ route('admin.proyek.destroy', $proyek->id) }}"
+                                        onsubmit="return confirm('Yakin hapus proyek {{ addslashes($proyek->judul) }}?')">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit"
+                                            class="inline-flex items-center gap-1 px-3 py-1.5 rounded-xl bg-red-50 text-red-500 text-xs font-semibold hover:bg-red-100 transition">
+                                            <span class="material-icons-round text-[14px]">delete</span>
+                                            Hapus
+                                        </button>
+                                    </form>
+                                </div>
                             </td>
                         </tr>
                     @empty

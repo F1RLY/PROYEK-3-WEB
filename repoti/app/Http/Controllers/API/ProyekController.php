@@ -19,12 +19,12 @@ class ProyekController extends Controller
     // Get all projects
     public function index()
     {
-        $proyek = Proyek::orderBy('created_at', 'desc')->get();
+        $proyek = Proyek::with(['dosen', 'gambars', 'kelompok.anggota.user'])
+            ->where('verifikasi', 1)
+            ->orderBy('created_at', 'desc')
+            ->get();
 
-        return response()->json([
-            'success' => true,
-            'data' => $proyek
-        ]);
+        return response()->json(['success' => true, 'data' => $proyek]);
     }
 
     // Get all dosen (untuk dropdown)

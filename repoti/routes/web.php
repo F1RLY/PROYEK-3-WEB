@@ -44,6 +44,7 @@ Route::prefix('admin')->group(function () {
     Route::get('/dashboard', [AdminController::class, 'index'])->name('admin.dashboard');
     Route::get('/expo', [AdminController::class, 'expo'])->name('admin.expo');
     Route::get('/proyek', [AdminController::class, 'proyek'])->name('admin.proyek');
+    Route::delete('/proyek/{id}', [AdminController::class, 'proyekDestroy'])->name('admin.proyek.destroy');
     // Dosen
     Route::get('/dosen', [AdminController::class, 'dosen'])->name('admin.dosen');
     Route::post('/dosen', [AdminController::class, 'dosenStore'])->name('admin.dosen.store');
@@ -59,6 +60,18 @@ Route::prefix('admin')->group(function () {
     Route::post('/verifikasi/{id}/setujui', [AdminController::class, 'setujui'])->name('admin.verifikasi.setujui');
     Route::post('/verifikasi/{id}/tolak', [AdminController::class, 'tolak'])->name('admin.verifikasi.tolak');
     Route::get('/verifikasi/{id}', [AdminController::class, 'detailVerifikasi'])->name('admin.verifikasi.detail');
+
+    // Expo
+    Route::get('/expo', [ExpoController::class, 'index'])->name('admin.expo');
+    Route::get('/expo/create', [ExpoController::class, 'create'])->name('admin.expo.create');
+    Route::post('/expo', [ExpoController::class, 'store'])->name('admin.expo.store');
+    Route::get('/expo/{id}', [ExpoController::class, 'show'])->name('admin.expo.show');
+    Route::post('/expo/{id}/proyek', [ExpoController::class, 'tambahProyek'])->name('admin.expo.tambahProyek');
+    Route::delete('/expo/{expoId}/proyek/{proyekId}', [ExpoController::class, 'hapusProyek'])->name('admin.expo.hapusProyek');
+    Route::post('/expo/{id}/start', [ExpoController::class, 'start'])->name('admin.expo.start');
+    Route::post('/expo/{id}/stop', [ExpoController::class, 'stop'])->name('admin.expo.stop');
+    Route::delete('/expo/{id}', [ExpoController::class, 'destroy'])->name('admin.expo.destroy');
+    Route::get('/expo/{id}/hasil', [ExpoController::class, 'hasil'])->name('admin.expo.hasil');
 });
 
 
