@@ -52,6 +52,10 @@
                             <i class="bi bi-box-arrow-in-right"></i> Login
                         </button>
                     </form>
+
+                    <a href="{{ url('/auth/google') }}">
+                        Login dengan Google
+                    </a>
                     
                     <div class="text-center mt-4">
                         <p class="text-muted">Belum punya akun? <a href="{{ url('/register') }}" class="text-primary fw-bold">Daftar Sekarang</a></p>

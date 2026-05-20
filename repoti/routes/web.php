@@ -7,6 +7,7 @@ use App\Http\Controllers\Web\AboutController;
 use App\Http\Controllers\Web\AuthController;
 use App\Http\Controllers\Web\ProfileController;
 use App\Http\Controllers\Web\AdminController;
+use App\Http\Controllers\Web\GoogleController;
 
 // --- AUTH ROUTES ---
 Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
@@ -33,6 +34,11 @@ Route::get('/repository/{code}', [RepositoryController::class, 'show'])->name('r
 Route::get('/expo', [ExpoController::class, 'index'])->name('expo'); // Ini untuk user biasa
 Route::get('/about', [AboutController::class, 'index'])->name('about');
 
+// goggle sign in
+Route::get('/auth/google', [GoogleController::class, 'redirectToGoogle']);
+
+Route::get('/auth/google/callback', [GoogleController::class, 'handleGoogleCallback']);
+
 
 Route::prefix('admin')->group(function () {
     Route::get('/dashboard', [AdminController::class, 'index'])->name('admin.dashboard');
@@ -48,3 +54,5 @@ Route::prefix('admin')->group(function () {
     Route::post('/verifikasi/{id}/tolak', [AdminController::class, 'tolak'])->name('admin.verifikasi.tolak');
     Route::get('/verifikasi/{id}', [AdminController::class, 'detailVerifikasi'])->name('admin.verifikasi.detail');
 });
+
+
