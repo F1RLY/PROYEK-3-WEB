@@ -22,9 +22,15 @@ class ProyekController extends Controller
         $proyek = Proyek::with(['dosen', 'gambars', 'kelompok.anggota.user'])
             ->where('verifikasi', 1)
             ->orderBy('created_at', 'desc')
-            ->get();
+            ->paginate(7);
 
-        return response()->json(['success' => true, 'data' => $proyek]);
+        return response()->json([
+            'success'      => true,
+            'data'         => $proyek->items(),
+            'current_page' => $proyek->currentPage(),
+            'last_page'    => $proyek->lastPage(),
+            'total'        => $proyek->total(),
+        ]);
     }
 
     // Get all dosen (untuk dropdown)
