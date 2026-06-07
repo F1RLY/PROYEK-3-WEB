@@ -283,7 +283,7 @@ class ProyekController extends Controller
 
         // Hapus gambar
         foreach ($proyek->gambars as $gambar) {
-            $path = public_path('images/' . $gambar->lokasi);
+            $path = public_path('images/proyek' . $gambar->lokasi);
             if (file_exists($path)) unlink($path);
             GambarProyek::where('gambarId', $gambar->id)->delete();
             $gambar->delete();
@@ -368,14 +368,14 @@ class ProyekController extends Controller
         // Update foto
         if ($request->hasFile('foto')) {
             foreach ($proyek->gambars as $gambar) {
-                $old = public_path('images/' . $gambar->lokasi);
+                $old = public_path('images/proyek' . $gambar->lokasi);
                 if (file_exists($old)) unlink($old);
                 GambarProyek::where('gambarId', $gambar->id)->delete();
                 $gambar->delete();
             }
             $file = $request->file('foto');
             $filename = time() . '.' . $file->getClientOriginalExtension();
-            $file->move(public_path('images'), $filename);
+            $file->move(public_path('images/proyek'), $filename);
             $gambar = Gambar::create([
                 'lokasi'     => $filename,
                 'imageCode'  => uniqid(),
