@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\AuthController;
 use App\Http\Controllers\API\ProyekController;
 use App\Http\Controllers\API\ExpoController;
+use App\Http\Controllers\API\ChatbotController;
 
 Route::post('/login', [AuthController::class, 'login']);
 Route::post('/register', [AuthController::class, 'register']);
@@ -13,6 +14,7 @@ Route::get('/expo', [ExpoController::class, 'index']);
 Route::get('/expo/{id}', [ExpoController::class, 'show']);
 Route::get('/expo/{id}/hasil', [ExpoController::class, 'hasil']);
 Route::post('/expo/{expoId}/proyek/{proyekId}/nilai', [ExpoController::class, 'nilaiStore']);
+Route::post('/chatbot', [ChatbotController::class, 'chat']);
 
 Route::middleware('auth:sanctum')->group(function () {
     // Profile
@@ -29,4 +31,5 @@ Route::middleware('auth:sanctum')->group(function () {
 
     // Dosen (untuk dropdown)
     Route::get('/dosen', [ProyekController::class, 'getDosen']);
+
 });
