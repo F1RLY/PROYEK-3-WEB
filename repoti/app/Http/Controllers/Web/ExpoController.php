@@ -21,6 +21,13 @@ class ExpoController extends Controller
         return view('admin.expo', compact('expos'));
     }
 
+public function publicExpo()
+{
+    $expoProjects = Proyek::latest()->get();
+
+    return view('expo', compact('expoProjects'));
+}
+
     // Form buat expo baru
     public function create()
     {
