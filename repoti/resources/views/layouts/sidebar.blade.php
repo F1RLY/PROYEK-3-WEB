@@ -48,25 +48,30 @@
         <div class="flex items-center gap-3 px-4 py-3 rounded-xl bg-[#F4F7FE]">
 
             <!-- Avatar -->
-            <div class="flex items-center justify-center w-9 h-9 rounded-full bg-[color:var(--primary)] text-white text-sm font-bold">
-                {{ strtoupper(substr(Auth::user()->username, 0, 1)) }}
-            </div>
+<div class="flex items-center justify-center w-9 h-9 rounded-full bg-[color:var(--primary)] text-white text-sm font-bold">
+    {{ strtoupper(substr(Auth::user()?->username ?? 'G', 0, 1)) }}
+</div>
 
-            <!-- Info -->
-            <div class="flex-1 min-w-0">
-                <p class="text-xs font-bold text-[#1B2559] truncate">{{ Auth::user()->username }}</p>
-                <p class="text-[10px] text-[#A3AED0]">Administrator</p>
-            </div>
+<!-- Info -->
+<div class="flex-1 min-w-0">
+    <p class="text-xs font-bold text-[#1B2559] truncate">
+        {{ Auth::user()?->username ?? 'Guest' }}
+    </p>
+    <p class="text-[10px] text-[#A3AED0]">
+        {{ Auth::check() ? 'Administrator' : 'Tamu' }}
+    </p>
+</div>
 
-            <!-- Logout -->
-            <form method="POST" action="{{ url('/logout') }}">
-                @csrf
-                <button type="submit" title="Logout"
-                    class="text-[#A3AED0] hover:text-red-500 transition">
-                    <span class="material-icons-round text-[20px]">logout</span>
-                </button>
-            </form>
-
+<!-- Logout -->
+@if(Auth::check())
+<form method="POST" action="{{ url('/logout') }}">
+    @csrf
+    <button type="submit" title="Logout"
+        class="text-[#A3AED0] hover:text-red-500 transition">
+        <span class="material-icons-round text-[20px]">logout</span>
+    </button>
+</form>
+@endif
         </div>
     </div>
 
