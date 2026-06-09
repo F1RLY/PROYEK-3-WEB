@@ -19,7 +19,7 @@ class ProyekController extends Controller
     // Get all projects
     public function index()
     {
-        $proyek = Proyek::with(['dosen', 'gambars', 'kelompok.anggota.user'])
+        $proyek = Proyek::with(['dosen', 'gambars', 'kelompok.anggota.user','videos'])
             ->where('verifikasi', 1)
             ->orderBy('created_at', 'desc')
             ->paginate(7);
